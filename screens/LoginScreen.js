@@ -1,12 +1,49 @@
 import React from 'react';
-import { ScrollView, StyleSheet, Text } from 'react-native';
+import {
+  ScrollView,
+  StyleSheet,
+  Text,
+  TextInput,
+  View,
+  Button,
+} from 'react-native';
 
-export default function LoginScreen() {
-  return (
-    <ScrollView style={styles.container}>
-      <Text>Login</Text>
-    </ScrollView>
-  );
+export default class LoginScreen extends React.Component {
+  constructor(props) {
+    super();
+    this.state = {
+      username: 'username placeholder',
+      password: 'password placeholder',
+    };
+  }
+  render() {
+    return (
+      <View style={styles.container}>
+        <TextInput
+          style={{
+            height: 40,
+            width: 300,
+            borderColor: 'gray',
+            borderWidth: 1,
+            marginBottom: 20,
+          }}
+          onChangeText={username => this.setState({ username })}
+          value={this.state.username}
+        />
+        <TextInput
+          style={{
+            height: 40,
+            width: 300,
+            borderColor: 'gray',
+            borderWidth: 1,
+          }}
+          onChangeText={password => this.setState({ password })}
+          value={this.state.password}
+        />
+        <Button title="Login" />
+      </View>
+    );
+  }
 }
 
 LoginScreen.navigationOptions = {
@@ -15,8 +52,12 @@ LoginScreen.navigationOptions = {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    width: '100%',
+    height: '100%',
+    display: 'flex',
     paddingTop: 15,
-    backgroundColor: '#fff',
+    backgroundColor: '#add8e6',
+    alignContent: 'center',
+    justifyContent: 'center',
   },
 });
